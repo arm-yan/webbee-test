@@ -28,6 +28,13 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
         return $this->model->all();
     }
 
+    public function allFutures(): Collection
+    {
+        return $this->model->newQuery()->whereHas('workshops', function ($query) {
+            $query->where('start', '>', date('Y-m-d').' 00:00:00');
+        })->get();
+    }
+
     public function find($id): ?Model
     {
         return $this->model->query()->where('id',$id)->first();
