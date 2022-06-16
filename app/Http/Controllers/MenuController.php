@@ -3,7 +3,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MenuCollectionResource;
 use App\Models\MenuItem;
+use App\Repository\Eloquent\MenuRepository;
 use Illuminate\Routing\Controller as BaseController;
 
 class MenuController extends BaseController
@@ -94,7 +96,8 @@ class MenuController extends BaseController
     ]
      */
 
-    public function getMenuItems() {
-        throw new \Exception('implement in coding task 3');
+    public function getMenuItems(MenuRepository $menuRepository): MenuCollectionResource
+    {
+        return new MenuCollectionResource($menuRepository->allRoots());
     }
 }
