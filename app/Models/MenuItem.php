@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MenuItem extends Model
 {
-    public function childrens(): HasMany
+    public function childs(): HasMany
     {
         return $this->hasMany(MenuItem::class, 'parent_id');
     }

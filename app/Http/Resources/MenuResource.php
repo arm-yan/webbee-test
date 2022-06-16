@@ -22,7 +22,7 @@ class MenuResource extends JsonResource
         }
 
         $menu = $this->resource->toArray();
-        $menu['children'] = new MenuCollectionResource($this->resource->childrens);
+        $menu['children'] = new MenuCollectionResource($this->resource->childs);
 
         return $menu;
     }
